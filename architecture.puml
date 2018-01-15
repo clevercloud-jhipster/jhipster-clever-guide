@@ -1,0 +1,25 @@
+@startuml
+
+database Book as dbbook
+actor Client as client
+node Gateway as gateway
+node "Book API" as book
+node "ISBN API" as isbn
+node Keycloak as key
+node "JHipster Registry" as registry
+node LDAP as ldap
+
+gateway -.> registry
+book -.> registry
+isbn -.> registry
+
+book -.> dbbook
+book -> isbn
+
+client -.> gateway
+gateway -> book
+gateway --> isbn
+
+key -> ldap
+
+@enduml
