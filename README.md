@@ -49,6 +49,12 @@ The ISBN API is dead simple: it's just a REST endpoint that returns a random num
 
 ### Gateway
 
+In JHipster, the [gateway](http://www.jhipster.tech/api-gateway/) acts as the entrance to our microservices. 
+It provides an Angular user interface with HTTP routing and load balancing, quality of service, security and API 
+documentation for all microservices.
+
+This is what the gateway looks like in our application.
+
 ### JHispter Registry
 
 The [JHipster Registry](http://www.jhipster.tech/jhipster-registry/) has three main purposes:
@@ -61,8 +67,25 @@ In our architecture, the Registry is used to register and lookup the Gateway, Bo
 
 ### Keycloak
 
+A real world application needs some soft of security. And when you are in the Cloud and that you expose APIs, it's better to have a good security support. JHipster proposes 
+[different options](http://www.jhipster.tech/security/), and we choose [Keycloak](http://www.keycloak.org/).
+With Keycloak, no need to deal with storing users or authenticating users, it secures our services with minimum fuss (and when I say services, I mean we secure our APIs as weel 
+as our gateway). We can even get advanced features such as User Federation, Identity Brokering and Social Login.
+In our use case we wanted to plug Keycloak to a real LDAP server ([Apache DS](http://directory.apache.org/)) 
+
 ## Building
 
+### APIs and Gateway
+
+To build our Book and ISBN APIs we rely on our good old Maven. JHipster comes with different profiles, [production](http://www.jhipster.tech/production/) is one of them. So it's
+ just a matter of executing a `./mvnw -Pprod`.
+ 
+It is the same for the Gateway... except that Maven uses the webpack plugin to build the front-end (`run webpack:prod`) 
+
 ## Deploying on Clever Cloud
+
+### JHipster addon
+
+## Scaling on Clever Cloud
 
 

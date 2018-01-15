@@ -6,11 +6,11 @@ database ISBN <<PostgreSQL>> as dbisbn
 
 actor Client as client
 node Gateway <<Angular>> as gateway
-node "Book API" as book
-node "ISBN API" as isbn
+node "Book API" <<Spring>> as book
+node "ISBN API" <<Spring>> as isbn
 node Keycloak as key
-node "JHipster Registry" as registry
-node LDAP as ldap
+node "JHipster Registry" <<Eureka>> as registry
+node LDAP <<Apache DS>> as ldap
 
 gateway -.> registry
 book -.> registry
@@ -20,7 +20,7 @@ book -.> dbbook
 isbn -.> dbisbn
 gateway .> dbgateway
 
-book -> isbn
+book -> "Feign" isbn
 
 client -.> gateway
 gateway -> book
