@@ -1,11 +1,11 @@
 @startuml
 
-database Book as dbbook
-database Gateway as dbgateway
-database ISBN as dbisbn
+database Book <<PostgreSQL>> as dbbook
+database Gateway <<PostgreSQL>> as dbgateway
+database ISBN <<PostgreSQL>> as dbisbn
 
 actor Client as client
-node Gateway as gateway
+node Gateway <<Angular>> as gateway
 node "Book API" as book
 node "ISBN API" as isbn
 node Keycloak as key
