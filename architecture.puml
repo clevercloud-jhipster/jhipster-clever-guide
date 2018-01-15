@@ -1,6 +1,9 @@
 @startuml
 
 database Book as dbbook
+database Gateway as dbgateway
+database ISBN as dbisbn
+
 actor Client as client
 node Gateway as gateway
 node "Book API" as book
@@ -14,6 +17,9 @@ book -.> registry
 isbn -.> registry
 
 book -.> dbbook
+isbn -.> dbisbn
+gateway .> dbgateway
+
 book -> isbn
 
 client -.> gateway
